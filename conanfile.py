@@ -69,6 +69,7 @@ class OpenscenegraphConan(ConanFile):
         cmake.verbose = True
         cmake.definitions["BUILD_OSG_APPLICATIONS"] = self.options.build_osg_applications
         cmake.definitions["BUILD_OSG_PLUGINS"] = self.options.build_osg_plugins
+        cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = self.options.shared
         cmake.configure()
         return cmake
 
