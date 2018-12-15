@@ -50,7 +50,7 @@ class OpenscenegraphConan(ConanFile):
     
     def requirements(self):
         if self.settings.os != "Windows":
-            self.requires("asio/1.12.0@bincrafters/testing")
+            self.requires("asio/1.12.0@bincrafters/stable")
 
     def config_options(self):
         if self.settings.os == 'Windows':
