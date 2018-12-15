@@ -1,17 +1,12 @@
-#include <osg/Polytope>
-#include <iostream>
+#include <osg/ArgumentParser>
 
-int main()
+int main( int argc, char** argv )
 {
-    osg::Polytope pt;
-    pt.setToBoundingBox(osg::BoundingBox(-1000, -1000, -1000, 1000, 1000, 1000));
-    bool bContains = pt.contains(osg::Vec3(0, 0, 0));
-    if (bContains)
-    {
-        std::cout<<"Polytope pt.contains(osg::Vec3(0, 0, 0)) has succeeded."<<std::endl;
-    }
-    else
-    {
-        std::cout<<"Polytope pt.contains(osg::Vec3(0, 0, 0)) has failed."<<std::endl;
-    }
+    osg::ArgumentParser arguments(&argc,argv);
+
+    arguments.getApplicationUsage()->setDescription(arguments.getApplicationName()+" is the example which runs units tests.");
+    arguments.getApplicationUsage()->setCommandLineUsage(arguments.getApplicationName()+" [options]");
+    arguments.getApplicationUsage()->addCommandLineOption("-h or --help","Display this information");
+	
+	return 0;
 }
