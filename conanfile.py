@@ -67,9 +67,9 @@ class OpenscenegraphConan(ConanFile):
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.verbose = True
-        cmake.definitions["BUILD_OSG_APPLICATIONS"] = self.options.build_osg_applications
-        cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = self.options.shared
-        cmake.definitions["BUILD_OSG_PLUGINS_BY_DEFAULT"] = self.options.build_osg_plugins
+        cmake.definitions["BUILD_OSG_APPLICATIONS"] = "ON"  if self.options.build_osg_applications else "OFF"
+        cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = "ON"  if self.options.shared else "OFF"
+        cmake.definitions["BUILD_OSG_PLUGINS_BY_DEFAULT"] = "ON"  if self.options.build_osg_plugins else "OFF"
         cmake.configure()
         return cmake
 
