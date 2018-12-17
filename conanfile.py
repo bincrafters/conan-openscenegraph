@@ -24,14 +24,14 @@ class OpenscenegraphConan(ConanFile):
         "fPIC": [True, False],
         "build_osg_applications": [True, False], 
         "build_osg_plugins": [True, False], 
-        "build_osgexamples": [True, False], 
+        "build_osg_examples": [True, False], 
     }
     default_options = {
         "shared": False, 
         "fPIC": True,
         "build_osg_applications": False, 
         "build_osg_plugins_by_default": False, 
-        "build_osgexamples": False, 
+        "build_osg_examples": False, 
     }
     _sha256_checksum = "51bbc79aa73ca602cd1518e4e25bd71d41a10abd296e18093a8acfebd3c62696"
     _source_subfolder = "source_subfolder"
@@ -71,7 +71,7 @@ class OpenscenegraphConan(ConanFile):
         cmake.definitions["BUILD_OSG_APPLICATIONS"] = "ON" if self.options.build_osg_applications else "OFF"
         cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = "ON" if self.options.shared else "OFF"
         cmake.definitions["BUILD_OSG_PLUGINS_BY_DEFAULT"] = "ON" if self.options.build_osg_plugins_by_default else "OFF"
-        cmake.definitions['BUILD_OSGEXAMPLES'] = "ON" if self.options.build_osgexamples else "OFF"
+        cmake.definitions['BUILD_OSG_EXAMPLES '] = "ON" if self.options.build_osg_examples else "OFF"
         
         if self.settings.compiler == "Visual Studio":
             cmake.definitions['BUILD_WITH_STATIC_CRT']= "ON" if "MT" in str(self.settings.compiler.runtime) else "OFF"
