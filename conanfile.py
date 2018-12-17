@@ -68,13 +68,13 @@ class OpenscenegraphConan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self)
-        cmake.definitions["BUILD_OSG_APPLICATIONS"] = "ON" if self.options.build_osg_applications else "OFF"
-        cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = "ON" if self.options.shared else "OFF"
-        cmake.definitions["BUILD_OSG_PLUGINS_BY_DEFAULT"] = "ON" if self.options.build_osg_plugins_by_default else "OFF"
-        cmake.definitions['BUILD_OSG_EXAMPLES '] = "ON" if self.options.build_osg_examples else "OFF"
+        cmake.definitions["BUILD_OSG_APPLICATIONS"] = self.options.build_osg_applications
+        cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = self.options.shared
+        cmake.definitions["BUILD_OSG_PLUGINS_BY_DEFAULT"] = self.options.build_osg_plugins_by_default
+        cmake.definitions['BUILD_OSG_EXAMPLES'] = self.options.build_osg_examples
         
         if self.settings.compiler == "Visual Studio":
-            cmake.definitions['BUILD_WITH_STATIC_CRT']= "ON" if "MT" in str(self.settings.compiler.runtime) else "OFF"
+            cmake.definitions['BUILD_WITH_STATIC_CRT']= "MT" in str(self.settings.compiler.runtime)
         
         cmake.configure()
         return cmake
