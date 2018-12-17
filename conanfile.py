@@ -23,7 +23,7 @@ class OpenscenegraphConan(ConanFile):
         "shared": [True, False], 
         "fPIC": [True, False],
         "build_osg_applications": [True, False], 
-        "build_osg_plugins": [True, False], 
+        "build_osg_plugins_by_default": [True, False], 
         "build_osg_examples": [True, False], 
     }
     default_options = {
