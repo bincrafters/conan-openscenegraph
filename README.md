@@ -2,7 +2,7 @@
 
 | Bintray | Windows | Linux & macOS |
 |:--------:|:---------:|:-----------------:|
-|[![Download](https://api.bintray.com/packages/bincrafters/public-conan/openscenegraph%3Abincrafters/images/download.svg) ](https://bintray.com/bincrafters/public-conan/openscenegraph%3Abincrafters/_latestVersion)|[![Build status](https://ci.appveyor.com/api/projects/status/github/bincrafters/conan-openscenegraph?svg=true)](https://ci.appveyor.com/project/bincrafters/conan-openscenegraph)|[![Build Status](https://travis-ci.org/bincrafters/conan-openscenegraph.svg)](https://travis-ci.org/bincrafters/conan-openscenegraph)|
+|[![Download](https://api.bintray.com/packages/bincrafters/public-conan/openscenegraph%3Abincrafters/images/download.svg) ](https://bintray.com/bincrafters/public-conan/openscenegraph%3Abincrafters/_latestVersion)|[![Build status](https://ci.appveyor.com/api/projects/status/github/bincrafters/conan-openscenegraph?svg=true)](https://ci.appveyor.com/project/bincrafters/conan-openscenegraph)|[![Build Status](https://travis-ci.com/bincrafters/conan-openscenegraph.svg)](https://travis-ci.com/bincrafters/conan-openscenegraph)|
 
 ## Conan.io Information
 
