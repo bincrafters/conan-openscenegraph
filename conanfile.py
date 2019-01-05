@@ -53,6 +53,27 @@ class OpenscenegraphConan(ConanFile):
     def requirements(self):
         if self.settings.os != "Windows":
             self.requires("asio/1.12.0@bincrafters/stable")
+            
+    def system_requirements(self):
+        if tools.os_info.is_linux:
+            if tools.os_info.with_apt:
+                installer = tools.SystemPackageTool()
+                if self.settings.arch == "x86" and tools.detected_architecture() == "x86_64":
+                    installer.install("gcc-multilib")
+                    installer.install("libglu1-mesa-dev:i386")
+                else:
+                    installer.install("libglu1-mesa-dev")
+            elif tools.os_info.with_yum:
+                installer = tools.SystemPackageTool()
+                if self.settings.arch == "x86" and tools.detected_architecture() == "x86_64":
+                    installer.install("glibmm24.i686")
+                    installer.install("glibc-devel.i686")
+                    installer.install("libGLU-devel.i686")
+                else:
+                    installer.install("libGLU-devel")
+            else:
+                self.output.warn("Could not determine Linux package manager, skipping system requirements installation.")
+
 
     def config_options(self):
         if self.settings.os == 'Windows':
