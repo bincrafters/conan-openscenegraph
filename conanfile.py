@@ -13,27 +13,28 @@ class OpenscenegraphConan(ConanFile):
     url = "https://github.com/bincrafters/conan-openscenegraph"
     homepage = "https://github.com/openscenegraph/OpenSceneGraph"
     author = "Bincrafters <bincrafters@gmail.com>"
-    license = "MIT"  
+    license = "MIT"
     exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt"]
     short_paths = True
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     options = {
-        "shared": [True, False], 
+        "shared": [True, False],
         "fPIC": [True, False],
-        "build_osg_applications": [True, False], 
-        "build_osg_plugins_by_default": [True, False], 
-        "build_osg_examples": [True, False], 
+        "build_osg_applications": [True, False],
+        "build_osg_plugins_by_default": [True, False],
+        "build_osg_examples": [True, False],
+        "dynamic_openthreads": [True, False]
     }
     default_options = {
-        "shared": False, 
+        "shared": False,
         "fPIC": True,
-        "build_osg_applications": False, 
-        "build_osg_plugins_by_default": False, 
-        "build_osg_examples": False, 
+        "build_osg_applications": False,
+        "build_osg_plugins_by_default": False,
+        "build_osg_examples": False,
+        "dynamic_openthreads": True
     }
-    _sha256_checksum = "51bbc79aa73ca602cd1518e4e25bd71d41a10abd296e18093a8acfebd3c62696"
     _source_subfolder = "source_subfolder"
     _build_subfolder = "build_subfolder"
 
@@ -49,11 +50,11 @@ class OpenscenegraphConan(ConanFile):
         "jasper/2.0.14@conan/stable",
         # "openblas/0.2.20@conan/stable", Removed until openblas is in conan center
     )
-    
+
     def requirements(self):
         if self.settings.os != "Windows":
             self.requires("asio/1.12.0@bincrafters/stable")
-            
+
     def system_requirements(self):
         if tools.os_info.is_linux:
             if tools.os_info.with_apt:
@@ -80,11 +81,10 @@ class OpenscenegraphConan(ConanFile):
             del self.options.fPIC
 
     def source(self):
-        tools.get(
-            "{0}/archive/OpenSceneGraph-{1}.tar.gz".format(self.homepage, self.version), 
-            sha256=self._sha256_checksum
-        )
-        extracted_dir = "OpenSceneGraph-OpenSceneGraph" "-" + self.version
+        prefix = "OpenSceneGraph"
+        sha256 = "51bbc79aa73ca602cd1518e4e25bd71d41a10abd296e18093a8acfebd3c62696"
+        tools.get("{0}/archive/{1}-{2}.tar.gz".format(self.homepage, prefix,self.version), sha256=sha256)
+        extracted_dir = "{}-{}-".format(prefix, prefix) + self.version
         os.rename(extracted_dir, self._source_subfolder)
 
     def _configure_cmake(self):
@@ -93,10 +93,11 @@ class OpenscenegraphConan(ConanFile):
         cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = self.options.shared
         cmake.definitions["BUILD_OSG_PLUGINS_BY_DEFAULT"] = self.options.build_osg_plugins_by_default
         cmake.definitions['BUILD_OSG_EXAMPLES'] = self.options.build_osg_examples
-        
+        cmake.definitions["DYNAMIC_OPENTHREADS"] = self.options.dynamic_openthreads
+
         if self.settings.compiler == "Visual Studio":
             cmake.definitions['BUILD_WITH_STATIC_CRT']= "MT" in str(self.settings.compiler.runtime)
-        
+
         cmake.configure()
         return cmake
 
