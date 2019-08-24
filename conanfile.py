@@ -62,13 +62,17 @@ class OpenscenegraphConan(ConanFile):
                 installer = tools.SystemPackageTool()
                 if self.settings.arch == "x86" and tools.detected_architecture() == "x86_64":
                     installer.install("gcc-multilib")
+                    installer.install("libx11-dev:i386")
                     installer.install("libgl1-mesa-dev:i386")
                     installer.install("libglu1-mesa-dev:i386")
+                    installer.install("libegl1-mesa-dev:i386")
                     installer.install("libgtk2.0-dev:i386")
                     installer.install("libpoppler-glib-dev:i386")
                 else:
+                    installer.install("libx11-dev")
                     installer.install("libgl1-mesa-dev")
                     installer.install("libglu1-mesa-dev")
+                    installer.install("libegl1-mesa-dev")
                     installer.install("libgtk2.0-dev")
                     installer.install("libpoppler-glib-dev")
             elif tools.os_info.with_yum:
