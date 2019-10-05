@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from conans import ConanFile, CMake, tools
 import os
 
@@ -39,13 +36,13 @@ class OpenscenegraphConan(ConanFile):
     _build_subfolder = "build_subfolder"
 
     requires = (
-        "zlib/1.2.11@conan/stable",
+        "zlib/1.2.11",
         "freetype/2.9.0@bincrafters/stable",
-        "libjpeg/9c@bincrafters/stable",
+        "libjpeg/9c",
         "libxml2/2.9.8@bincrafters/stable",
         "libcurl/7.61.1@bincrafters/stable",
-        "libpng/1.6.34@bincrafters/stable",
-        "libtiff/4.0.9@bincrafters/stable",
+        "libpng/1.6.37",
+        "libtiff/4.0.9",
         "sdl2/2.0.9@bincrafters/stable",
         "jasper/2.0.14@conan/stable",
         "cairo/1.17.2@bincrafters/stable",
