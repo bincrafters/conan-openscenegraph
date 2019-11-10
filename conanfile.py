@@ -9,7 +9,6 @@ class OpenscenegraphConan(ConanFile):
     topics = ("conan", "openscenegraph", "graphics")
     url = "https://github.com/bincrafters/conan-openscenegraph"
     homepage = "https://github.com/openscenegraph/OpenSceneGraph"
-    author = "Bincrafters <bincrafters@gmail.com>"
     license = "MIT"
     exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt"]
@@ -39,19 +38,19 @@ class OpenscenegraphConan(ConanFile):
         "zlib/1.2.11",
         "freetype/2.9.0@bincrafters/stable",
         "libjpeg/9c",
-        "libxml2/2.9.8@bincrafters/stable",
+        "libxml2/2.9.9",
         "libcurl/7.61.1@bincrafters/stable",
         "libpng/1.6.37",
         "libtiff/4.0.9",
         "sdl2/2.0.9@bincrafters/stable",
-        "jasper/2.0.14@conan/stable",
+        "jasper/2.0.14",
         "cairo/1.17.2@bincrafters/stable",
         # "openblas/0.2.20@conan/stable", Removed until openblas is in conan center
     )
 
     def requirements(self):
         if self.settings.os != "Windows":
-            self.requires("asio/1.12.0@bincrafters/stable")
+            self.requires("asio/1.13.0")
 
     def system_requirements(self):
         if tools.os_info.is_linux:

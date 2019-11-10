@@ -118,3 +118,11 @@ jobs:
         CONAN_CLANG_VERSIONS: 8
         CONAN_DOCKER_IMAGE: conanio/clang8
         CONAN_CURRENT_PAGE: 2
+      Clang 9 Page 1:
+        CONAN_CLANG_VERSIONS: 9
+        CONAN_DOCKER_IMAGE: conanio/clang9
+        CONAN_CURRENT_PAGE: 1
+      Clang 9 Page 2:
+        CONAN_CLANG_VERSIONS: 9
+        CONAN_DOCKER_IMAGE: conanio/clang9
+        CONAN_CURRENT_PAGE: 2
