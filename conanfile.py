@@ -37,7 +37,7 @@ class OpenscenegraphConan(ConanFile):
     requires = (
         "zlib/1.2.11",
         "freetype/2.9.0@bincrafters/stable",
-        "libjpeg/9c",
+        "libjpeg/9d",
         "libxml2/2.9.9",
         "libcurl/7.67.0",
         "libpng/1.6.37",
