@@ -45,7 +45,7 @@ class OpenscenegraphConan(ConanFile):
         "sdl2/2.0.9@bincrafters/stable",
         "jasper/2.0.14",
         "cairo/1.17.2@bincrafters/stable",
-        # "openblas/0.2.20@conan/stable", Removed until openblas is in conan center
+        # "openblas/0.3.7", Removed until openblas is in conan center
     )
 
     def requirements(self):
