@@ -10,7 +10,6 @@ class OpenscenegraphConan(ConanFile):
     url = "https://github.com/bincrafters/conan-openscenegraph"
     homepage = "https://github.com/openscenegraph/OpenSceneGraph"
     license = "MIT"
-    exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt"]
     short_paths = True
     generators = "cmake"
@@ -36,13 +35,13 @@ class OpenscenegraphConan(ConanFile):
 
     requires = (
         "zlib/1.2.11",
-        "freetype/2.9.0@bincrafters/stable",
+        "freetype/2.10.1",
         "libjpeg/9d",
         "libxml2/2.9.9",
         "libcurl/7.67.0",
         "libpng/1.6.37",
         "libtiff/4.0.9",
-        "sdl2/2.0.9@bincrafters/stable",
+        "sdl2/2.0.10@bincrafters/stable",
         "jasper/2.0.14",
         "cairo/1.17.2@bincrafters/stable",
         # "openblas/0.3.7", Removed until openblas is in conan center
@@ -82,7 +81,6 @@ class OpenscenegraphConan(ConanFile):
             else:
                 self.output.warn("Could not determine Linux package manager, skipping system requirements installation.")
 
-
     def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
@@ -90,7 +88,7 @@ class OpenscenegraphConan(ConanFile):
     def source(self):
         prefix = "OpenSceneGraph"
         sha256 = "51bbc79aa73ca602cd1518e4e25bd71d41a10abd296e18093a8acfebd3c62696"
-        tools.get("{0}/archive/{1}-{2}.tar.gz".format(self.homepage, prefix,self.version), sha256=sha256)
+        tools.get("{0}/archive/{1}-{2}.tar.gz".format(self.homepage, prefix, self.version), sha256=sha256)
         extracted_dir = "{}-{}-".format(prefix, prefix) + self.version
         os.rename(extracted_dir, self._source_subfolder)
 
@@ -103,7 +101,7 @@ class OpenscenegraphConan(ConanFile):
         cmake.definitions["DYNAMIC_OPENTHREADS"] = self.options.dynamic_openthreads
 
         if self.settings.compiler == "Visual Studio":
-            cmake.definitions['BUILD_WITH_STATIC_CRT']= "MT" in str(self.settings.compiler.runtime)
+            cmake.definitions['BUILD_WITH_STATIC_CRT'] = "MT" in str(self.settings.compiler.runtime)
 
         cmake.configure()
         return cmake
