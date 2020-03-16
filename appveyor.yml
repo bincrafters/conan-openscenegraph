@@ -1,0 +1,56 @@
+# bincrafters-conventions:no-new-compiler-versions
+
+environment:
+  PYTHON_HOME: "C:\\Python37"
+
+  CONAN_TOTAL_PAGES: 5
+
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 1
+      CONAN_BUILD_TYPES: Release
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 2
+      CONAN_BUILD_TYPES: Release
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 3
+      CONAN_BUILD_TYPES: Release
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 4
+      CONAN_BUILD_TYPES: Release
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 5
+      CONAN_BUILD_TYPES: Release
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 1
+      CONAN_BUILD_TYPES: Debug
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 2
+      CONAN_BUILD_TYPES: Debug
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 3
+      CONAN_BUILD_TYPES: Debug
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 4
+      CONAN_BUILD_TYPES: Debug
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      CONAN_VISUAL_VERSIONS: 14
+      CONAN_CURRENT_PAGE: 5
+      CONAN_BUILD_TYPES: Debug
+
+install:
+  - set PATH=%PYTHON_HOME%;%PYTHON_HOME%/Scripts/;%PATH%
+  - pip install bincrafters_package_tools
+  - conan user # It creates the conan data directory
+
+build_script:
+  - bincrafters-package-tools --auto
