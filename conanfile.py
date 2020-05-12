@@ -37,7 +37,7 @@ class OpenscenegraphConan(ConanFile):
         "zlib/1.2.11",
         "freetype/2.10.1",
         "libjpeg/9d",
-        "libxml2/2.9.9",
+        "libxml2/2.9.10",
         "libcurl/7.67.0",
         "libpng/1.6.37",
         "libtiff/4.0.9",
