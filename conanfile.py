@@ -35,7 +35,7 @@ class OpenscenegraphConan(ConanFile):
 
     requires = (
         "zlib/1.2.11",
-        "freetype/2.10.1",
+        "freetype/2.10.2",
         "libjpeg/9d",
         "libxml2/2.9.10",
         "libcurl/7.67.0",
@@ -44,7 +44,7 @@ class OpenscenegraphConan(ConanFile):
         "sdl2/2.0.10@bincrafters/stable",
         "jasper/2.0.14",
         "cairo/1.17.2@bincrafters/stable",
-        # "openblas/0.3.9", Removed until openblas is in conan center
+        # "openblas/0.3.10", Removed until openblas is in conan center
     )
 
     def requirements(self):
