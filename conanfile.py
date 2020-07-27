@@ -41,7 +41,7 @@ class OpenscenegraphConan(ConanFile):
         "libcurl/7.67.0",
         "libpng/1.6.37",
         "libtiff/4.0.9",
-        "sdl2/2.0.10@bincrafters/stable",
+        "sdl2/2.0.12@bincrafters/stable",
         "jasper/2.0.14",
         "cairo/1.17.2@bincrafters/stable",
         # "openblas/0.3.10", Removed until openblas is in conan center
