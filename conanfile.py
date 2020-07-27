@@ -105,6 +105,6 @@ class OpenscenegraphConan(ConanFile):
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
         if self.settings.os == "Linux":
-            self.cpp_info.libs.append("rt")
+            self.cpp_info.system_libs.append("rt")
         if not self.options.shared:
             self.cpp_info.defines.append("OSG_LIBRARY_STATIC=1")
