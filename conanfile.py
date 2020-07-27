@@ -47,6 +47,8 @@ class OpenscenegraphConan(ConanFile):
         # "openblas/0.3.10", Removed until openblas is in conan center
     )
 
+    _cmake = None
+
     def requirements(self):
         if self.settings.os != "Windows":
             self.requires("asio/1.13.0")
@@ -93,18 +95,19 @@ class OpenscenegraphConan(ConanFile):
         os.rename(extracted_dir, self._source_subfolder)
 
     def _configure_cmake(self):
-        cmake = CMake(self)
-        cmake.definitions["BUILD_OSG_APPLICATIONS"] = self.options.build_osg_applications
-        cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = self.options.shared
-        cmake.definitions["BUILD_OSG_PLUGINS_BY_DEFAULT"] = self.options.build_osg_plugins_by_default
-        cmake.definitions['BUILD_OSG_EXAMPLES'] = self.options.build_osg_examples
-        cmake.definitions["DYNAMIC_OPENTHREADS"] = self.options.dynamic_openthreads
+        if not self._cmake:
+            self._cmake = CMake(self)
+            self._cmake.definitions["BUILD_OSG_APPLICATIONS"] = self.options.build_osg_applications
+            self._cmake.definitions["DYNAMIC_OPENSCENEGRAPH"] = self.options.shared
+            self._cmake.definitions["BUILD_OSG_PLUGINS_BY_DEFAULT"] = self.options.build_osg_plugins_by_default
+            self._cmake.definitions['BUILD_OSG_EXAMPLES'] = self.options.build_osg_examples
+            self._cmake.definitions["DYNAMIC_OPENTHREADS"] = self.options.dynamic_openthreads
 
-        if self.settings.compiler == "Visual Studio":
-            cmake.definitions['BUILD_WITH_STATIC_CRT'] = "MT" in str(self.settings.compiler.runtime)
+            if self.settings.compiler == "Visual Studio":
+                self._cmake.definitions['BUILD_WITH_STATIC_CRT'] = "MT" in str(self.settings.compiler.runtime)
 
-        cmake.configure()
-        return cmake
+            self._cmake.configure()
+        return self._cmake
 
     def build(self):
         cmake = self._configure_cmake()
