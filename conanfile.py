@@ -12,7 +12,7 @@ class OpenscenegraphConan(ConanFile):
     license = "MIT"
     exports_sources = ["CMakeLists.txt"]
     short_paths = True
-    generators = "cmake"
+    generators = "cmake", "cmake_find_package"
     settings = "os", "arch", "compiler", "build_type"
     options = {
         "shared": [True, False],
