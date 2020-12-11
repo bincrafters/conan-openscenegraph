@@ -43,8 +43,8 @@ class OpenscenegraphConan(ConanFile):
         "libtiff/4.0.9",
         "sdl2/2.0.12@bincrafters/stable",
         "jasper/2.0.19",
-        "cairo/1.17.2@bincrafters/stable",
-        # "openblas/0.3.10", Removed until openblas is in conan center
+        "cairo/1.17.2",
+        # "openblas/0.3.12", Removed until openblas is in conan center
     )
 
     _cmake = None
